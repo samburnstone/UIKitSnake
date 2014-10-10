@@ -8,23 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, SBSnakeSlitherDirection) {
-    SBSnakeSlitherDirectionLeft,
-    SBSnakeSlitherDirectionRight,
-    SBSnakeSlitherDirectionUp,
-    SBSnakeSlitherDirectionDown
-};
+#import "SBSnakePart.h"
 
 @interface SBSnake : NSObject
 
-@property (assign, nonatomic) SBSnakeSlitherDirection slitherDirection;
 @property (weak, nonatomic) UIView *superview;
 @property (strong, nonatomic) NSMutableArray *snakeBodyParts;
 
 - (instancetype)initWithGameView:(UIView *)gameStage atStartingPos:(CGPoint)startPoint;
 
+- (void)changeSnakeDirection:(SBSnakePartSlitherDirection)slitherDirection;
 - (void)moveByVector:(CGVector)movementDirection;
 
+- (void)updateBodyPartPositions;
 - (UIView *)headBodyPart;
 - (void)appendBodyPart;
 

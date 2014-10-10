@@ -8,9 +8,9 @@
 
 #import "SBSnake.h"
 
-#import "SBSnakePart.h"
-
-@interface SBSnake ()
+@interface SBSnake () {
+    NSUInteger currentPartToMove;
+}
 
 @end
 
@@ -20,6 +20,8 @@
     self = [super init];
     
     if (self) {
+
+        currentPartToMove = 0;
         
         _snakeBodyParts = [NSMutableArray array];
         _superview = gameStage;
@@ -34,17 +36,30 @@
     return self;
 }
 
+- (void)updateBodyPartPositions {
+    // Go through all body parts and update their position based on movement to apply to that part
+}
+
 /**
  Move snake based on currently travelling direction
  */
 - (void)moveByVector:(CGVector)movementDirection {
     [UIView animateWithDuration:0.05 animations:^{
         [_snakeBodyParts enumerateObjectsUsingBlock:^(UIView *snakePart, NSUInteger idx, BOOL *stop) {
-            [UIView animateWithDuration:0.05 animations:^{
+//            [UIView animateWithDuration:0.05 animations:^{
                 [snakePart setFrame:CGRectOffset(snakePart.frame, movementDirection.dx, movementDirection.dy)];
             }];
-        }];
+//        }];
     }];
+}
+
+/**
+ Respond to request to alter direction of the snake. Apply to one part per frame.
+ 
+ May have to queue up changes - i.e. long snake left swipe then up swipe
+ */
+- (void)changeSnakeDirection:(SBSnakePartSlitherDirection)slitherDirection {
+    
 }
 
 /**
@@ -68,7 +83,6 @@
     SBSnakePart *newTail = [SBSnakePart createSnakeTailAtPoint:endPoint];
     [_superview addSubview:newTail];
     [self.snakeBodyParts addObject:newTail];
-    
 }
 
 @end

@@ -15,6 +15,4 @@
 
 - (instancetype)initWithSnakeView:(SBSnake *)snake;
 
-- (CGVector)movementVectorForSnake;
-
 @end

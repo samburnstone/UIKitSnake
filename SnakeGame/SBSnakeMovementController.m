@@ -50,54 +50,21 @@
     [_snake.superview addGestureRecognizer:downSwipe];
 }
 
-- (CGVector)movementVectorForSnake {
-    
-    static const CGFloat SLITHER_SPEED = 8.0;
-    
-    CGVector movementVector;
-    
-    switch (self.snake.slitherDirection) {
-        case SBSnakeSlitherDirectionLeft:
-            movementVector.dx = -1.0;
-            movementVector.dy = 0.0;
-            break;
-        case SBSnakeSlitherDirectionRight:
-            movementVector.dx = 1.0;
-            movementVector.dy = 0.0;
-            break;
-        case SBSnakeSlitherDirectionUp:
-            movementVector.dx = 0.0;
-            movementVector.dy = -1.0;
-            break;
-        case SBSnakeSlitherDirectionDown:
-            movementVector.dx = 0.0;
-            movementVector.dy = 1.0;
-            break;
-        default:
-            break;
-    }
-    
-    movementVector.dx *= SLITHER_SPEED;
-    movementVector.dy *= SLITHER_SPEED;
-    
-    return movementVector;
-}
-
 #pragma mark - Swipe Listeners
 - (void)handleSwipeLeft {
-    self.snake.slitherDirection = SBSnakeSlitherDirectionLeft;
+    [self.snake changeSnakeDirection:SBSnakePartSlitherDirectionLeft];
 }
 
 - (void)handleSwipeRight {
-    self.snake.slitherDirection = SBSnakeSlitherDirectionRight;
+    [self.snake changeSnakeDirection:SBSnakePartSlitherDirectionRight];
 }
 
 - (void)handleSwipeUp {
-    self.snake.slitherDirection = SBSnakeSlitherDirectionUp;
+    [self.snake changeSnakeDirection:SBSnakePartSlitherDirectionUp];
 }
 
 - (void)handleSwipeDown {
-    self.snake.slitherDirection = SBSnakeSlitherDirectionDown;
+    [self.snake changeSnakeDirection:SBSnakePartSlitherDirectionDown];
 }
 
 @end

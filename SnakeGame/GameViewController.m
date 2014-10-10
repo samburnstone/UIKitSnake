@@ -40,7 +40,6 @@
 
     // Create and add the snake to the view
     self.snake = [[SBSnake alloc] initWithGameView:_gameStageView atStartingPos:CGPointMake(0, 0)];
-    self.snake.slitherDirection = SBSnakeSlitherDirectionRight;
     
     self.snakeMovementController = [[SBSnakeMovementController alloc] initWithSnakeView:_snake];
     
@@ -69,8 +68,7 @@
  Moves position of game elements. Called every set interval by gameUpdateTimer
  */
 - (void)updateFrame {
-    CGVector movementDirection = [_snakeMovementController movementVectorForSnake];
-    [self.snake moveByVector:movementDirection];
+    [self.snake ]
     
     [self checkForSnakeCollisionWithEdges];
     [self checkForCollisionWithFoodItems];
