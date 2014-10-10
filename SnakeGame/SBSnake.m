@@ -8,7 +8,7 @@
 
 #import "SBSnake.h"
 
-#import "UIView+SnakeParts.h"
+#import "SBSnakePart.h"
 
 @interface SBSnake ()
 
@@ -24,7 +24,7 @@
         _snakeBodyParts = [NSMutableArray array];
         _superview = gameStage;
         
-        UIView *snakeHead = [UIView createSnakeHeadAtPoint:startPoint];
+        SBSnakePart *snakeHead = [SBSnakePart createSnakeHeadAtPoint:startPoint];
         
         [_superview addSubview:snakeHead];
         
@@ -65,7 +65,7 @@
     
     CGPoint endPoint = CGPointMake(CGRectGetMinX(rearBodyPart.frame) - rearBodyPart.frame.size.width, CGRectGetMinY(rearBodyPart.frame));
     
-    UIView *newTail = [UIView createSnakeTailAtPoint:endPoint];
+    SBSnakePart *newTail = [SBSnakePart createSnakeTailAtPoint:endPoint];
     [_superview addSubview:newTail];
     [self.snakeBodyParts addObject:newTail];
     

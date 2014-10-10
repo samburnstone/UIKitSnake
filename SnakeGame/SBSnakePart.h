@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SBSnakePart;
+@interface SBSnakePart : UIView
 
 + (SBSnakePart *)createSnakeHeadAtPoint:(CGPoint)startPoint;
 + (SBSnakePart *)createSnakeTailAtPoint:(CGPoint)startPoint;

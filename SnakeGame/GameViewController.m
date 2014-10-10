@@ -85,22 +85,23 @@
  */
 - (void)checkForSnakeCollisionWithEdges {
     
-    UIView *headPart = [self.snake headBodyPart];
-    
-    CGFloat maxX = CGRectGetMaxX(headPart.frame);
-    CGFloat minX = CGRectGetMinX(headPart.frame);
-    CGFloat maxY = CGRectGetMaxY(headPart.frame);
-    CGFloat minY = CGRectGetMinY(headPart.frame);
-    
-    CGFloat gameStageViewWidth = CGRectGetMaxX(_gameStageView.bounds);
-    CGFloat gameStageViewHeight = CGRectGetMaxY(_gameStageView.bounds);
-    
-    if (minX < 0 || maxX > gameStageViewWidth || minY < 0 || maxY > gameStageViewHeight) {
-        /** GAME OVER **/
-        NSLog(@"Game over!!");
+    [self.snake.snakeBodyParts enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *top) {
+        CGFloat maxX = CGRectGetMaxX(view.frame);
+        CGFloat minX = CGRectGetMinX(view.frame);
+        CGFloat maxY = CGRectGetMaxY(view.frame);
+        CGFloat minY = CGRectGetMinY(view.frame);
         
-        [self disableTimers];
-    }
+        CGFloat gameStageViewWidth = CGRectGetMaxX(_gameStageView.bounds);
+        CGFloat gameStageViewHeight = CGRectGetMaxY(_gameStageView.bounds);
+        
+        if (minX < 0 || maxX > gameStageViewWidth || minY < 0 || maxY > gameStageViewHeight) {
+            /** GAME OVER **/
+            NSLog(@"Game over!!");
+            
+            [self disableTimers];
+        }
+    }];
+    
 }
 
 /**
