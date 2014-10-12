@@ -73,6 +73,7 @@
 - (void)updateFrame {
     [self.snake updateBodyPartPositions];
     
+    [self checkForCollisionWithItself];
     [self checkForSnakeCollisionWithEdges];
     [self checkForCollisionWithFoodItems];
     
@@ -97,11 +98,42 @@
         
         if (minX < 0 || maxX > gameStageViewWidth || minY < 0 || maxY > gameStageViewHeight) {
             /** GAME OVER **/
-            NSLog(@"Game over!!");
+            NSLog(@"You hit the wall!!");
             
             [self disableTimers];
         }
     }];
+    
+}
+
+/**
+ Check snake hasn't collided with its own body
+ */
+- (void)checkForCollisionWithItself {
+    
+    // Track if a collision has been detected
+    __block BOOL collisionDetected = NO;
+    
+    [self.snake.snakeBodyParts enumerateObjectsUsingBlock:^(SBSnakePart *outerItem, NSUInteger idx, BOOL *stop) {
+        if (collisionDetected) {
+            *stop = YES;
+        }
+        [self.snake.snakeBodyParts enumerateObjectsUsingBlock:^(SBSnakePart *innerItem, NSUInteger idx, BOOL *stop) {
+            // Ensure that we're not checking the same body parts in outer and inner loop
+            if (![outerItem isEqual:innerItem]) {
+                // Satisfied they're not the same part, now check if item frames intersect
+                if (CGRectIntersectsRect(innerItem.frame, outerItem.frame)) {
+                    collisionDetected = YES;
+                    *stop = YES;
+                }
+            }
+        }];
+    }];
+    
+    if (collisionDetected) {
+        [self disableTimers];
+        NSLog(@"You collided with your own body!");
+    }
     
 }
 
@@ -116,16 +148,21 @@
     static const NSUInteger FOOD_PICKUP_SCORE = 10;
     
     [foodItemsOnScreen enumerateObjectsUsingBlock:^(SBFoodItemView *foodItem, NSUInteger idx, BOOL *stop) {
-        if (CGRectIntersectsRect(foodItem.frame, [_snake headBodyPart].frame)) {
-            // Picked up food item
-            [self.foodItemSpawner removeFoodItem:foodItem];
+        [self.snake.snakeBodyParts enumerateObjectsUsingBlock:^(SBSnakePart *snakePart, NSUInteger snakeIndex, BOOL *stop) {
+        
+            if (CGRectIntersectsRect(foodItem.frame, snakePart.frame)) {
+                // Picked up food item
+                [self.foodItemSpawner removeFoodItem:foodItem];
+                
+                // Increase score
+                score += FOOD_PICKUP_SCORE;
+                
+                // Append new tail part to snake
+                [self.snake appendBodyPart];
+            }
+
             
-            // Increase score
-            score += FOOD_PICKUP_SCORE;
-            
-            // Append new tail part to snake
-            [self.snake appendBodyPart];
-        }
+        }];
     }];
     
 }
