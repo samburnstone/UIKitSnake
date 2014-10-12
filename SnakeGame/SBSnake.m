@@ -30,10 +30,12 @@
         
         _superview = gameStage;
         
-        // Create the head of the snake
+        // Create the head of the snake + a tail part
         SBSnakePart *snakeHead = [SBSnakePart createSnakeHeadAtPoint:startPoint];
         [_superview addSubview:snakeHead];
         [_snakeBodyParts addObject:snakeHead];
+        
+        [self appendBodyPart];
     }
     
     return self;
@@ -101,8 +103,6 @@
  Appends a new UIView item to the tail of the existing snake
  */
 - (void)appendBodyPart {
-    // TODO: Take into account direction of snake
-    
     // Get the last body part
     SBSnakePart *previousRearBodyPart = [self.snakeBodyParts lastObject];
     

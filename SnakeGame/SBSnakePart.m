@@ -17,7 +17,7 @@
 + (SBSnakePart *)createSnakeHeadAtPoint:(CGPoint)startPoint {
     SBSnakePart *snakeHead = [SBSnakePart new];
     [snakeHead setFrame:CGRectMake(startPoint.x, startPoint.y, 20.0f, 20.0f)];
-    [snakeHead setBackgroundColor:[UIColor colorWithRed:1 green:0.45 blue:0.27 alpha:1]];
+    [snakeHead setBackgroundColor:[UIColor colorWithRed:0.85 green:0.55 blue:0.25 alpha:1]];
     [snakeHead setSlitherDirection:SBSnakePartSlitherDirectionRight];
     
     return snakeHead;
@@ -26,7 +26,15 @@
 + (SBSnakePart *)createSnakeTailAtPoint:(CGPoint)startPoint{
     SBSnakePart *snakeTail = [SBSnakePart new];
     [snakeTail setFrame:CGRectMake(startPoint.x, startPoint.y, 20.0f, 20.0f)];
-    [snakeTail setBackgroundColor:[UIColor colorWithRed:1 green:0.45 blue:0.27 alpha:1]];
+    
+    int randNum = arc4random_uniform(2);
+    
+    if (randNum == 0) {
+        [snakeTail setBackgroundColor:[UIColor colorWithRed:0.69 green:0.1 blue:0.08 alpha:1]];
+    }
+    else {
+        [snakeTail setBackgroundColor:[UIColor colorWithRed:0.07 green:0.09 blue:0.11 alpha:1]];
+    }
     
     return snakeTail;
 }
