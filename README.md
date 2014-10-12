@@ -26,6 +26,4 @@ Special items with limited lifespan (extra points)
 Snake looks generic (and unsnakelike!)
 
 Make it look more like a snake (distinguish head from tail).
-Maybe add banding [snakeImg]
-
-[snakeImg] : http://www.californiaherps.com/noncal/southwest/swsnakes/images/meeuryxanthusrbaz042.jpg
+Maybe add banding (http://www.californiaherps.com/noncal/southwest/swsnakes/images/meeuryxanthusrbaz042.jpg) 
