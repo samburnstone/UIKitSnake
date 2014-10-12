@@ -18,6 +18,7 @@
     SBSnakePart *snakeHead = [SBSnakePart new];
     [snakeHead setFrame:CGRectMake(startPoint.x, startPoint.y, 20.0f, 20.0f)];
     [snakeHead setBackgroundColor:[UIColor colorWithRed:1 green:0.45 blue:0.27 alpha:1]];
+    [snakeHead setSlitherDirection:SBSnakePartSlitherDirectionRight];
     
     return snakeHead;
 }
@@ -30,6 +31,43 @@
     return snakeTail;
 }
 
+/**
+ Based on current movement direction, determine change in position of snake part
+ @return The new offset from current position
+ */
+- (CGVector)movementVectorForSnakePart {
+    
+    // Speed must be the same as height and width of the snake
+    static const CGFloat SLITHER_SPEED = 20.0f; // Height and width must be the same!
+
+    CGVector movementVector;
+
+    switch (self.slitherDirection) {
+                case SBSnakePartSlitherDirectionLeft:
+                    movementVector.dx = -1.0;
+                    movementVector.dy = 0.0;
+                    break;
+                case SBSnakePartSlitherDirectionRight:
+                    movementVector.dx = 1.0;
+                    movementVector.dy = 0.0;
+                    break;
+            case SBSnakePartSlitherDirectionUp:
+                    movementVector.dx = 0.0;
+                    movementVector.dy = -1.0;
+                    break;
+                case SBSnakePartSlitherDirectionDown:
+                    movementVector.dx = 0.0;
+                    movementVector.dy = 1.0;
+                    break;
+                default:
+                    break;
+        }
+    
+    movementVector.dx *= SLITHER_SPEED;
+    movementVector.dy *= SLITHER_SPEED;
+    
+    return movementVector;
+}
 
 
 @end

@@ -35,12 +35,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    static NSTimeInterval GAME_UDPATE_TIME_INTERVAL = 0.1;
+    static NSTimeInterval FOOD_SPAWN_TIME_INTERVAL = 3.0;
+    
     score = 0;
     [self updateScoreDisplay];
 
     // Create and add the snake to the view
     self.snake = [[SBSnake alloc] initWithGameView:_gameStageView atStartingPos:CGPointMake(0, 0)];
-    self.snake.slitherDirection = SBSnakeSlitherDirectionRight;
     
     self.snakeMovementController = [[SBSnakeMovementController alloc] initWithSnakeView:_snake];
     
@@ -48,8 +50,8 @@
     self.foodItemSpawner = [[SBFoodItemSpawner alloc] initWithGameStageView:_gameStageView];
     
     // Start timer that will update game screen
-    gameUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(updateFrame) userInfo:nil repeats:YES];
-    foodSpawnTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self.foodItemSpawner selector:@selector(spawnFoodItem) userInfo:nil repeats:YES];
+    gameUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:GAME_UDPATE_TIME_INTERVAL target:self selector:@selector(updateFrame) userInfo:nil repeats:YES];
+    foodSpawnTimer = [NSTimer scheduledTimerWithTimeInterval:FOOD_SPAWN_TIME_INTERVAL target:self.foodItemSpawner selector:@selector(spawnFoodItem) userInfo:nil repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,8 +71,7 @@
  Moves position of game elements. Called every set interval by gameUpdateTimer
  */
 - (void)updateFrame {
-    CGVector movementDirection = [_snakeMovementController movementVectorForSnake];
-    [self.snake moveByVector:movementDirection];
+    [self.snake updateBodyPartPositions];
     
     [self checkForSnakeCollisionWithEdges];
     [self checkForCollisionWithFoodItems];
