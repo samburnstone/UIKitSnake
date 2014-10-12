@@ -38,19 +38,12 @@
 
 - (void)updateBodyPartPositions {
     // Go through all body parts and update their position based on movement to apply to that part
-}
-
-/**
- Move snake based on currently travelling direction
- */
-- (void)moveByVector:(CGVector)movementDirection {
-    [UIView animateWithDuration:0.05 animations:^{
-        [_snakeBodyParts enumerateObjectsUsingBlock:^(UIView *snakePart, NSUInteger idx, BOOL *stop) {
-//            [UIView animateWithDuration:0.05 animations:^{
-                [snakePart setFrame:CGRectOffset(snakePart.frame, movementDirection.dx, movementDirection.dy)];
-            }];
-//        }];
+    
+    [self.snakeBodyParts enumerateObjectsUsingBlock:^(SBSnakePart *part, NSUInteger idx, BOOL *stop) {
+        CGVector movementVector = [part movementVectorForSnakePart];
+        [part setFrame:CGRectOffset(part.frame, movementVector.dx, movementVector.dy)];
     }];
+    
 }
 
 /**
@@ -59,14 +52,22 @@
  May have to queue up changes - i.e. long snake left swipe then up swipe
  */
 - (void)changeSnakeDirection:(SBSnakePartSlitherDirection)slitherDirection {
+    currentPartToMove = 0;
     
+    // get head part of snake
+    SBSnakePart *head = (SBSnakePart *)[self headBodyPart];
+    
+    [head setSlitherDirection:slitherDirection];
+    
+    // Next time need to move body part at next index
+    currentPartToMove++;
 }
 
 /**
  Retrive head component of the snake
  @return Top part of snake
  */
-- (UIView *)headBodyPart {
+- (SBSnakePart *)headBodyPart {
     return [_snakeBodyParts firstObject];
 }
 

@@ -18,7 +18,6 @@
 - (instancetype)initWithGameView:(UIView *)gameStage atStartingPos:(CGPoint)startPoint;
 
 - (void)changeSnakeDirection:(SBSnakePartSlitherDirection)slitherDirection;
-- (void)moveByVector:(CGVector)movementDirection;
 
 - (void)updateBodyPartPositions;
 - (UIView *)headBodyPart;

@@ -31,6 +31,42 @@
     return snakeTail;
 }
 
+/**
+ Based on current movement direction, determine change in position of snake part
+ @return The new offset from current position
+ */
+- (CGVector)movementVectorForSnakePart {
+    
+    static const CGFloat SLITHER_SPEED = 8.0;
+
+    CGVector movementVector;
+
+    switch (self.slitherDirection) {
+                case SBSnakePartSlitherDirectionLeft:
+                    movementVector.dx = -1.0;
+                    movementVector.dy = 0.0;
+                    break;
+                case SBSnakePartSlitherDirectionRight:
+                    movementVector.dx = 1.0;
+                    movementVector.dy = 0.0;
+                    break;
+            case SBSnakePartSlitherDirectionUp:
+                    movementVector.dx = 0.0;
+                    movementVector.dy = -1.0;
+                    break;
+                case SBSnakePartSlitherDirectionDown:
+                    movementVector.dx = 0.0;
+                    movementVector.dy = 1.0;
+                    break;
+                default:
+                    break;
+        }
+    
+    movementVector.dx *= SLITHER_SPEED;
+    movementVector.dy *= SLITHER_SPEED;
+    
+    return movementVector;
+}
 
 
 @end

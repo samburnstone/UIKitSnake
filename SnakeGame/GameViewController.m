@@ -68,7 +68,7 @@
  Moves position of game elements. Called every set interval by gameUpdateTimer
  */
 - (void)updateFrame {
-    [self.snake ]
+    [self.snake updateBodyPartPositions];
     
     [self checkForSnakeCollisionWithEdges];
     [self checkForCollisionWithFoodItems];

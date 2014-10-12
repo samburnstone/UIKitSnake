@@ -22,4 +22,6 @@ typedef NS_ENUM(NSUInteger, SBSnakePartSlitherDirection) {
 + (SBSnakePart *)createSnakeHeadAtPoint:(CGPoint)startPoint;
 + (SBSnakePart *)createSnakeTailAtPoint:(CGPoint)startPoint;
 
+- (CGVector)movementVectorForSnakePart;
+
 @end
