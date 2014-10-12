@@ -20,6 +20,7 @@
 		27A5122B19E7DC7A0021A5D1 /* SnakeGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5122A19E7DC7A0021A5D1 /* SnakeGameTests.m */; };
 		27A5123619E7DFBA0021A5D1 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5123519E7DFBA0021A5D1 /* GameViewController.m */; };
 		27A5123919E7E08E0021A5D1 /* SBSnake.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5123819E7E08E0021A5D1 /* SBSnake.m */; };
+		F63D703A19EB0FD000E68E8F /* SBSnakeMovement.m in Sources */ = {isa = PBXBuildFile; fileRef = F63D703919EB0FD000E68E8F /* SBSnakeMovement.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		27A5123519E7DFBA0021A5D1 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		27A5123719E7E08E0021A5D1 /* SBSnake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBSnake.h; sourceTree = "<group>"; };
 		27A5123819E7E08E0021A5D1 /* SBSnake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBSnake.m; sourceTree = "<group>"; };
+		F63D703819EB0FD000E68E8F /* SBSnakeMovement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBSnakeMovement.h; sourceTree = "<group>"; };
+		F63D703919EB0FD000E68E8F /* SBSnakeMovement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBSnakeMovement.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,8 @@
 			children = (
 				27A5123719E7E08E0021A5D1 /* SBSnake.h */,
 				27A5123819E7E08E0021A5D1 /* SBSnake.m */,
+				F63D703819EB0FD000E68E8F /* SBSnakeMovement.h */,
+				F63D703919EB0FD000E68E8F /* SBSnakeMovement.m */,
 				2799F93B19E837F9003A4974 /* SBSnakePart.h */,
 				2799F93C19E837F9003A4974 /* SBSnakePart.m */,
 			);
@@ -286,6 +291,7 @@
 				27A5121419E7DC7A0021A5D1 /* AppDelegate.m in Sources */,
 				270BBF9719E7F5510092744F /* SBFoodItemView.m in Sources */,
 				27A5121119E7DC7A0021A5D1 /* main.m in Sources */,
+				F63D703A19EB0FD000E68E8F /* SBSnakeMovement.m in Sources */,
 				270BBFA019E81CBD0092744F /* SBSnakeMovementController.m in Sources */,
 				270BBF9A19E818170092744F /* SBFoodItemSpawner.m in Sources */,
 				27A5123919E7E08E0021A5D1 /* SBSnake.m in Sources */,

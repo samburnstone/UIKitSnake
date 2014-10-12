@@ -20,7 +20,7 @@
 - (void)changeSnakeDirection:(SBSnakePartSlitherDirection)slitherDirection;
 
 - (void)updateBodyPartPositions;
-- (UIView *)headBodyPart;
+- (SBSnakePart *)headBodyPart;
 - (void)appendBodyPart;
 
 @end

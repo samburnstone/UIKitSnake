@@ -37,7 +37,8 @@
  */
 - (CGVector)movementVectorForSnakePart {
     
-    static const CGFloat SLITHER_SPEED = 8.0;
+    // Speed must be the same as height and width of the snake
+    static const CGFloat SLITHER_SPEED = 20.0f; // Height and width must be the same!
 
     CGVector movementVector;
 
