@@ -13,6 +13,8 @@
 #import "SBFoodItemView.h"
 #import "SBSnakeMovementController.h"
 
+#import "GameOverViewController.h"
+
 @interface GameViewController () {
     NSTimer *gameUpdateTimer;
     NSTimer *foodSpawnTimer;
@@ -174,6 +176,18 @@
 - (void)disableTimers {
     [gameUpdateTimer invalidate];
     [foodSpawnTimer invalidate];
+    
+    // Timers disabled, show game over screen
+    [self performSegueWithIdentifier:@"showGameOver" sender:self];
+}
+
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Pass score to game over view
+    if ([segue.identifier isEqualToString:@"showGameOver"]) {
+        GameOverViewController *gameOverVC = [segue destinationViewController];
+        gameOverVC.playerScore = score;
+    }
 }
 
 @end

@@ -11,6 +11,7 @@
 		270BBF9A19E818170092744F /* SBFoodItemSpawner.m in Sources */ = {isa = PBXBuildFile; fileRef = 270BBF9919E818170092744F /* SBFoodItemSpawner.m */; };
 		270BBFA019E81CBD0092744F /* SBSnakeMovementController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270BBF9F19E81CBD0092744F /* SBSnakeMovementController.m */; };
 		2799F93D19E837F9003A4974 /* SBSnakePart.m in Sources */ = {isa = PBXBuildFile; fileRef = 2799F93C19E837F9003A4974 /* SBSnakePart.m */; };
+		2799F94019EBBC86003A4974 /* GameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2799F93F19EBBC86003A4974 /* GameOverViewController.m */; };
 		27A5121119E7DC7A0021A5D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5121019E7DC7A0021A5D1 /* main.m */; };
 		27A5121419E7DC7A0021A5D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5121319E7DC7A0021A5D1 /* AppDelegate.m */; };
 		27A5121719E7DC7A0021A5D1 /* HomeScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5121619E7DC7A0021A5D1 /* HomeScreenViewController.m */; };
@@ -42,6 +43,8 @@
 		270BBF9F19E81CBD0092744F /* SBSnakeMovementController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBSnakeMovementController.m; sourceTree = "<group>"; };
 		2799F93B19E837F9003A4974 /* SBSnakePart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBSnakePart.h; sourceTree = "<group>"; };
 		2799F93C19E837F9003A4974 /* SBSnakePart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBSnakePart.m; sourceTree = "<group>"; };
+		2799F93E19EBBC86003A4974 /* GameOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverViewController.h; sourceTree = "<group>"; };
+		2799F93F19EBBC86003A4974 /* GameOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverViewController.m; sourceTree = "<group>"; };
 		27A5120B19E7DC7A0021A5D1 /* SnakeGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnakeGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A5120F19E7DC7A0021A5D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27A5121019E7DC7A0021A5D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -112,6 +115,8 @@
 				27A5121619E7DC7A0021A5D1 /* HomeScreenViewController.m */,
 				27A5123419E7DFBA0021A5D1 /* GameViewController.h */,
 				27A5123519E7DFBA0021A5D1 /* GameViewController.m */,
+				2799F93E19EBBC86003A4974 /* GameOverViewController.h */,
+				2799F93F19EBBC86003A4974 /* GameOverViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2799F94019EBBC86003A4974 /* GameOverViewController.m in Sources */,
 				27A5123619E7DFBA0021A5D1 /* GameViewController.m in Sources */,
 				27A5121719E7DC7A0021A5D1 /* HomeScreenViewController.m in Sources */,
 				27A5121419E7DC7A0021A5D1 /* AppDelegate.m in Sources */,
